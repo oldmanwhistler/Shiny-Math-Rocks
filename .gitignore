@@ -264,3 +264,12 @@ __pycache__/
 
 # ModMixer
 .modmixer
+.modmixer/cs-assets.json
+.modmixer/stubs.json
+Source/obj/project.assets.json
+Source/obj/project.nuget.cache
+Source/obj/rider.project.restore.info
+Source/obj/ShinyMathRocks.csproj.nuget.dgspec.json
+Source/obj/Debug/ShinyMathRocks.AssemblyInfo.cs
+Source/obj/Debug/ShinyMathRocks.AssemblyInfoInputs.cache
+Source/obj/Debug/ShinyMathRocks.csproj.AssemblyReference.cache
