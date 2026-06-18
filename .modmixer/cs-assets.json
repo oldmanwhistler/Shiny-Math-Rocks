@@ -1,0 +1,9 @@
+{
+  "textures": [
+    "UI/Dice/ShinyD20",
+    "UI/Dice/BlackGoldD20",
+    "UI/Dice/RedTranslucentD20",
+    "UI/Dice/GalaxyD20"
+  ],
+  "audio": []
+}

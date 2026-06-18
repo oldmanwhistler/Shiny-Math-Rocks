@@ -1,0 +1,55 @@
+{
+	"[xml]": {
+        "editor.defaultFormatter": "redhat.vscode-xml",
+        "editor.formatOnSave": true
+    },
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"cSpell.words": [
+			"Archite",
+			"Baseliners",
+			"biostat",
+			"Cradlemold",
+			"Echovessel",
+			"Echovessels",
+			"endogene",
+			"endogenes",
+			"endogenic",
+			"Fluxspawn",
+			"friggin",
+			"Hallowbound",
+			"headcanon",
+			"Hediff",
+			"Hediffs",
+			"Hiveling",
+			"hivelings",
+			"Inhumanized",
+			"nerfs",
+			"Psycast",
+			"psycasting",
+			"psylink",
+			"Rimsort",
+			"samhain",
+			"Samhaphage",
+			"samhaphages",
+			"shambler",
+			"Stillnesss",
+			"Taukai",
+			"unmakers",
+			"Unmute",
+			"Xeno",
+			"xenogene",
+			"Xenogenes",
+			"xenogenetic",
+			"xenotype",
+			"Xenotype",
+			"xenotypes"
+		],
+		"markdown.extension.completion.enabled": false,
+		"markdown.extension.tableFormatter.enabled": false
+	}
+}

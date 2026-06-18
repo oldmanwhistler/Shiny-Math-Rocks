@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingDef ParentName="DrugBase">
+    <defName>SMR_ShinyMathRock</defName>
+    <label>shiny math rock</label>
+    <description>A polished twenty-sided die beloved by tabletop strategists, bored colonists, and anyone who thinks chance should sparkle. Pawns can roll it for a burst of drama and mood.</description>
+    <possessionCount>4</possessionCount>
+    <graphicData>
+      <texPath>Things/Item/ShinyMathRock</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.65</drawSize>
+      <onGroundRandomRotateAngle>35</onGroundRandomRotateAngle>
+    </graphicData>
+    <rotatable>false</rotatable>
+    <stackLimit>75</stackLimit>
+    <statBases>
+      <MarketValue>8</MarketValue>
+      <Mass>0.02</Mass>
+      <DeteriorationRate>0.2</DeteriorationRate>
+      <Flammability>0.2</Flammability>
+      <WorkToMake>180</WorkToMake>
+    </statBases>
+    <ingestible>
+      <foodType>Processed</foodType>
+      <preferability>NeverForNutrition</preferability>
+      <maxNumToIngestAtOnce>1</maxNumToIngestAtOnce>
+      <defaultNumToIngestAtOnce>1</defaultNumToIngestAtOnce>
+      <baseIngestTicks>180</baseIngestTicks>
+      <humanlikeOnly>true</humanlikeOnly>
+      <joyKind>Chemical</joyKind>
+      <joy>0.05</joy>
+      <drugCategory>Social</drugCategory>
+      <ingestSound>SMR_DiceClatter</ingestSound>
+      <ingestHoldUsesTable>false</ingestHoldUsesTable>
+      <tableDesired>false</tableDesired>
+      <showIngestFloatOption>false</showIngestFloatOption>
+      <ingestCommandString>Roll {0}</ingestCommandString>
+      <ingestReportString>Rolling {0}.</ingestReportString>
+      <canAutoSelectAsFoodForCaravan>false</canAutoSelectAsFoodForCaravan>
+      <outcomeDoers>
+        <li Class="ShinyMathRocks.IngestionOutcomeDoer_RollDice" />
+      </outcomeDoers>
+    </ingestible>
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <recipeUsers>
+        <li>CraftingSpot</li>
+        <li>DrugLab</li>
+      </recipeUsers>
+      <effectWorking>Smelt</effectWorking>
+      <soundWorking>Recipe_MakeStoneBlocks</soundWorking>
+      <displayPriority>1420</displayPriority>
+      <bulkRecipeCount>4</bulkRecipeCount>
+    </recipeMaker>
+    <costList>
+      <Silver>15</Silver>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Forbiddable" />
+      <li Class="CompProperties_Drug">
+        <addictiveness>0</addictiveness>
+        <minToleranceToAddict>999</minToleranceToAddict>
+        <existingAddictionSeverityOffset>0</existingAddictionSeverityOffset>
+        <needLevelOffset>0</needLevelOffset>
+        <overdoseSeverityOffset>0~0</overdoseSeverityOffset>
+        <largeOverdoseChance>0</largeOverdoseChance>
+        <teetotalerCanConsume>true</teetotalerCanConsume>
+        <listOrder>175</listOrder>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <JobDef>
+    <defName>SMR_RollDice</defName>
+    <driverClass>ShinyMathRocks.JobDriver_RollDice</driverClass>
+    <reportString>rolling TargetA.</reportString>
+    <allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+  </JobDef>
+
+  <ThoughtDef>
+    <defName>SMR_DiceRollMood</defName>
+    <durationDays>0.75</durationDays>
+    <stackLimit>3</stackLimit>
+    <developmentalStageFilter>Child, Adult</developmentalStageFilter>
+    <stages>
+      <li>
+        <label>rolled a nat 1</label>
+        <description>I rolled a natural 1. The universe has personally mocked me.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+      <li>
+        <label>terrible roll</label>
+        <description>That roll was painfully bad.</description>
+        <baseMoodEffect>-2</baseMoodEffect>
+      </li>
+      <li>
+        <label>mediocre roll</label>
+        <description>The die landed somewhere in the mushy middle.</description>
+        <baseMoodEffect>2</baseMoodEffect>
+      </li>
+      <li>
+        <label>decent roll</label>
+        <description>That was a respectable roll.</description>
+        <baseMoodEffect>5</baseMoodEffect>
+      </li>
+      <li>
+        <label>great roll</label>
+        <description>The shiny math rock smiled on me.</description>
+        <baseMoodEffect>10</baseMoodEffect>
+      </li>
+      <li>
+        <label>rolled a nat 20!</label>
+        <description>Natural 20! I am unstoppable, at least emotionally.</description>
+        <baseMoodEffect>15</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <SoundDef>
+    <defName>SMR_DiceClatter</defName>
+    <maxSimultaneous>4</maxSimultaneous>
+    <context>MapOnly</context>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>SMR/DiceClatter</clipPath>
+          </li>
+        </grains>
+        <volumeRange>35~45</volumeRange>
+        <pitchRange>0.92~1.12</pitchRange>
+        <distRange>15~55</distRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+</Defs>

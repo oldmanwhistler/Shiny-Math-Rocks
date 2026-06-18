@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "entries": [
+    {
+      "path": "Sounds/SMR/DiceClatter.ogg",
+      "kind": "audio",
+      "sha256": "c6ba218eb5ebd4c19b2d3051efe1a44b516f0b42056a44c7fef5838d9b7bba8c",
+      "generatedAt": "2026-06-18T02:46:31.013Z"
+    }
+  ]
+}

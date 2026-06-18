@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ModMetaData>
+  <name>[OMW] Shiny Math Rocks</name>
+  <packageId>oldmanwhistler.ShinyMathRocks</packageId>
+  <author>OldManWhistler</author>
+  <description>Adds collectible D20 dice pawns can roll for a randomized mood effect and a on-screen roll animation.</description>
+  <supportedVersions>
+    <li>1.6</li>
+  </supportedVersions>
+</ModMetaData>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ShinyMathRocks.DiceThemeDef>
+    <defName>SMR_CosmicD20</defName>
+    <label>Cosmic Abyssal Nebula</label>
+    <description>Semi-translucent deep midnight blue and violet swirls.</description>
+    <texPath>UI/Dice/CosmicD20</texPath>
+  </ShinyMathRocks.DiceThemeDef>    
+  
+    <ShinyMathRocks.DiceThemeDef>
+    <defName>SMR_GreenGoldD20</defName>
+    <label>Green Gold</label>
+    <description>Semi-translucent green with gold flecks.</description>
+    <texPath>UI/Dice/CosmicD20</texPath>
+  </ShinyMathRocks.DiceThemeDef>    
+
+    <ShinyMathRocks.DiceThemeDef>
+    <defName>SMR_EnchantedGroveD20</defName>
+    <label>The Enchanted Grove</label>
+    <description>Crystal-clear resin on the top half, seamlessly fading into a smoky, moss-green opaque base.</description>
+    <texPath>UI/Dice/EnchantedGroveD20</texPath>
+  </ShinyMathRocks.DiceThemeDef>    
+
+    <ShinyMathRocks.DiceThemeDef>
+    <defName>SMR_EldritchHorizonD20</defName>
+    <label>Eldritch Horizon</label>
+    <description>Murky, translucent teal with dark tendrils of opaque black alcohol ink cutting sharply through the center.</description>
+    <texPath>UI/Dice/EldritchHorizonD20</texPath>
+  </ShinyMathRocks.DiceThemeDef>   
+
+    <ShinyMathRocks.DiceThemeDef>
+    <defName>SMR_GildedArchiveD20</defName>
+    <label>Gilded Archive</label>
+    <description>Swirled warm amber, rich honey, and cream-colored resin designed to mimic the look of aged, weathered parchment.</description>
+    <texPath>UI/Dice/GildedArchiveD20</texPath>
+  </ShinyMathRocks.DiceThemeDef>  
+
+    <ShinyMathRocks.DiceThemeDef>
+    <defName>SMR_SynthwaveOverdriveD20</defName>
+    <label>Synthwave Overdrive</label>
+    <description>A sharp, clean diagonal split—one half vibrant translucent magenta, the other half electric cyan.</description>
+    <texPath>UI/Dice/SynthwaveOverdriveD20</texPath>
+  </ShinyMathRocks.DiceThemeDef> 
+
+    <ShinyMathRocks.DiceThemeDef>
+    <defName>SMR_TheReliquaryD20</defName>
+    <label>The Reliquary</label>
+    <description>Translucent or semi-translucent dark purple resin, filled with swirling crimson and black smoke effects.</description>
+    <texPath>UI/Dice/TheReliquaryD20</texPath>
+  </ShinyMathRocks.DiceThemeDef> 
+
+</Defs>
