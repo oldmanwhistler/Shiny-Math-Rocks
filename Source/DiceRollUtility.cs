@@ -27,7 +27,7 @@ namespace ShinyMathRocks
                 }
             }
 
-            DiceThemeDef defaultTheme = DefDatabase<DiceThemeDef>.GetNamedSilentFail("SMR_DefaultBlueD20");
+            DiceThemeDef defaultTheme = DefDatabase<DiceThemeDef>.GetNamedSilentFail("SMR_TranslucentSapphireD20");
             return defaultTheme;
         }
 
@@ -107,7 +107,6 @@ namespace ShinyMathRocks
                 ShinyMathRocksDefOf.SMR_DiceClatter.PlayOneShot(
                     SoundInfo.InMap(new TargetInfo(pawn.Position, pawn.Map)));
             }
-
             if (PawnUtility.ShouldSendNotificationAbout(pawn))
             {
                 MessageTypeDef messageType = roll == 1

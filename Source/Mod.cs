@@ -1,5 +1,6 @@
 using UnityEngine;
 using Verse;
+using System.Collections.Generic; // Added for FloatMenu
 
 namespace ShinyMathRocks
 {
@@ -7,20 +8,22 @@ namespace ShinyMathRocks
     {
         public bool showRollWindow = true;
         public float moodScale = 1f;
-        public int rollsRequired = 1;
-        public float buffValue = 0.005f;
+        public int rollsRequired = 3;
+        public float buffValue = 0.01f;
         public Vector2 diceWindowPosition = new Vector2(-1f, -1f);
-        public Vector2 diceWindowSize = new Vector2(460f, 420f); // Default to initial size
+        public Vector2 diceWindowSize = new Vector2(460f, 350f); // Default to initial size
+        public string selectedDiceThemeDefName = "SMR_TranslucentSapphireD20"; // Default selected die for viewer
 
         public override void ExposeData()
         {
             base.ExposeData();
             Scribe_Values.Look(ref showRollWindow, "showRollWindow", true);
             Scribe_Values.Look(ref moodScale, "moodScale", 1f);
-            Scribe_Values.Look(ref rollsRequired, "rollsRequired", 1);
-            Scribe_Values.Look(ref buffValue, "buffValue", 0.005f);
+            Scribe_Values.Look(ref rollsRequired, "rollsRequired", 3);
+            Scribe_Values.Look(ref buffValue, "buffValue", 0.01f);
             Scribe_Values.Look(ref diceWindowPosition, "diceWindowPosition", new Vector2(-1f, -1f));
-            Scribe_Values.Look(ref diceWindowSize, "diceWindowSize", new Vector2(460f, 420f));
+            Scribe_Values.Look(ref diceWindowSize, "diceWindowSize", new Vector2(460f, 350f));
+            Scribe_Values.Look(ref selectedDiceThemeDefName, "selectedDiceThemeDefName", "SMR_TranslucentSapphireD20");
         }
     }
 
@@ -49,10 +52,54 @@ namespace ShinyMathRocks
             Settings.moodScale = listing.Slider(Settings.moodScale, 0f, 2f);
             listing.Gap(8f);
             listing.Label("Optimization delta per tier: " + ShinyMathRocksMod.Settings.rollsRequired);
-            ShinyMathRocksMod.Settings.rollsRequired = (int)listing.Slider(ShinyMathRocksMod.Settings.rollsRequired, 1, 20);
+            Settings.rollsRequired = (int)listing.Slider(Settings.rollsRequired, 1, 20);
             listing.Gap(4f);
-            listing.Label("Consciousness buff/debuff per tier: " + ShinyMathRocksMod.Settings.buffValue.ToStringPercent());
-            ShinyMathRocksMod.Settings.buffValue = listing.Slider(ShinyMathRocksMod.Settings.buffValue, 0.001f, 0.05f);
+            listing.Label("Consciousness buff/debuff per tier: " + Settings.buffValue.ToStringPercent());
+            Settings.buffValue = listing.Slider(Settings.buffValue, 0.001f, 0.05f);
+            listing.Gap(16f); // More gap before the viewer
+
+            // Dice Viewer Section
+            Rect viewerRect = listing.GetRect(200f); // Reserve space for viewer
+            Rect dropdownRect = new Rect(viewerRect.x, viewerRect.y, viewerRect.width * 0.5f, 30f);
+            Rect previewRect = new Rect(viewerRect.x + viewerRect.width * 0.5f + 10f, viewerRect.y, 100f, 100f);
+
+            // Dropdown to select DiceThemeDef
+            Text.Anchor = TextAnchor.MiddleLeft;
+            Widgets.Label(dropdownRect.LeftPart(0.4f), "SMR_DiceTheme".Translate());
+            Text.Anchor = TextAnchor.UpperLeft;
+            Rect dropdownButtonRect = dropdownRect.RightPart(0.6f);
+            
+            DiceThemeDef currentSelectedTheme = DefDatabase<DiceThemeDef>.GetNamedSilentFail(Settings.selectedDiceThemeDefName);
+            string currentThemeLabel = currentSelectedTheme?.LabelCap ?? "None".Translate();
+
+            if (Widgets.ButtonText(dropdownButtonRect, currentThemeLabel))
+            {
+                List<FloatMenuOption> options = new List<FloatMenuOption>();
+                foreach (DiceThemeDef themeDef in DefDatabase<DiceThemeDef>.AllDefsListForReading)
+                {
+                    options.Add(new FloatMenuOption(themeDef.LabelCap, delegate
+                    {
+                        Settings.selectedDiceThemeDefName = themeDef.defName;
+                    }));
+                }
+                Find.WindowStack.Add(new FloatMenu(options));
+            }
+
+            // Draw Dice Preview
+            DiceThemeDef previewTheme = DefDatabase<DiceThemeDef>.GetNamedSilentFail(Settings.selectedDiceThemeDefName);
+            if (previewTheme != null)
+            {
+                DicePreviewUtility.DrawDiePreview(previewRect, previewTheme, "20", 1f);
+            }
+            else
+            {
+                // Fallback if selectedTheme is null or not found
+                Widgets.DrawBoxSolidWithOutline(previewRect, Color.gray, Color.white);
+                Text.Anchor = TextAnchor.MiddleCenter;
+                Widgets.Label(previewRect, "SMR_NoDiceSelected".Translate());
+            }
+            Text.Anchor = TextAnchor.UpperLeft; // Reset anchor
+
             listing.Gap(8f);
             if (listing.ButtonText("Reset settings"))
             {
@@ -61,7 +108,8 @@ namespace ShinyMathRocks
                 ShinyMathRocksMod.Settings.rollsRequired = 3;
                 ShinyMathRocksMod.Settings.buffValue = 0.01f;
                 ShinyMathRocksMod.Settings.diceWindowPosition = new Vector2(-1f, -1f);
-                ShinyMathRocksMod.Settings.diceWindowSize = new Vector2(460f, 420f);
+                ShinyMathRocksMod.Settings.diceWindowSize = new Vector2(460f, 350f);
+                ShinyMathRocksMod.Settings.selectedDiceThemeDefName = "SMR_TranslucentSapphireD20";
             }
             listing.End();
         }

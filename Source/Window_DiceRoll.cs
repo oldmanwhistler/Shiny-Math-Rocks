@@ -23,7 +23,7 @@ namespace ShinyMathRocks
         private string themeDefNameUsed; // Store the theme defName that was actually used
         private Color numberFontColor = Color.white; // New field for font color
 
-        public override Vector2 InitialSize => new Vector2(460f, 420f);
+        public override Vector2 InitialSize => new Vector2(460f, 350f);
         protected override float Margin => 0f;
 
         public Window_DiceRoll(string pawnLabel, int finalRoll, int stage, DiceThemeDef diceThemeDef)
@@ -86,7 +86,7 @@ Texture2D tex = ContentFinder<Texture2D>.Get("UI/Dice/ShinyD20", reportFailure: 
                     if (tex != null)
                     {
                         diceTexture = tex;
-                        themeDefNameUsed = "SMR_DefaultBlueD20";
+                        themeDefNameUsed = "SMR_TranslucentSapphireD20";
                     }
                 }
             }
