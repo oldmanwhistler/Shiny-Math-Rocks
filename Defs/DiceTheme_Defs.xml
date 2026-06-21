@@ -120,4 +120,24 @@
   <texPath>UI/Dice/TranslucentSapphireD20</texPath>
 </ShinyMathRocks.DiceThemeDef>
 
+<ShinyMathRocks.DiceThemeDef>
+    <defName>SMR_GougedWoodD20</defName>
+    <label>Gouged Ancient Wood</label>
+    <description>A minimalist icosahedron crafted from heavily scratched and gouged wood.</description>
+    <texPath>UI/Dice/GougedWoodD20</texPath>
+  </ShinyMathRocks.DiceThemeDef>
+
+<ShinyMathRocks.DiceThemeDef>
+    <defName>SMR_ScrapSteelD20</defName>
+    <label>Scrap Steel Wreckage D20</label>
+    <description>A minimalist d20 forged from dull, scratched steel repurposed from mechanical wreckage.</description>
+    <texPath>UI/Dice/ScrapSteelD20</texPath>
+  </ShinyMathRocks.DiceThemeDef>
+
+  <ShinyMathRocks.DiceThemeDef>
+    <defName>SMR_LustrousPlasteelD20</defName>
+    <label>Lustrous Plasteel Spacer D20</label>
+    <description>A minimalist d20 silhouette featuring a smooth, ceramic-like plasteel surface that emits a subtle, icy blue sheen along its sharp geometric facets.</description>
+    <texPath>UI/Dice/LustrousPlasteelD20</texPath>
+  </ShinyMathRocks.DiceThemeDef>
 </Defs>
