@@ -21,6 +21,7 @@ namespace ShinyMathRocks
         private bool finalSoundPlayed;
         private Texture2D diceTexture;
         private string themeDefNameUsed; // Store the theme defName that was actually used
+        private Color numberFontColor = Color.white; // New field for font color
 
         public override Vector2 InitialSize => new Vector2(460f, 420f);
         protected override float Margin => 0f;
@@ -87,6 +88,15 @@ Texture2D tex = ContentFinder<Texture2D>.Get("UI/Dice/ShinyD20", reportFailure: 
                         diceTexture = tex;
                         themeDefNameUsed = "SMR_DefaultBlueD20";
                     }
+                }
+            }
+            // Determine font color
+            if (!themeDefNameUsed.NullOrEmpty())
+            {
+                DiceThemeDef finalThemeDef = DefDatabase<DiceThemeDef>.GetNamedSilentFail(themeDefNameUsed);
+                if (finalThemeDef != null && finalThemeDef.fontColor.HasValue)
+                {
+                    numberFontColor = finalThemeDef.fontColor.Value;
                 }
             }
         }
@@ -165,7 +175,7 @@ Texture2D tex = ContentFinder<Texture2D>.Get("UI/Dice/ShinyD20", reportFailure: 
             Text.Font = GameFont.Medium;
             GUI.color = new Color(0f, 0f, 0f, 0.70f * fade);
             Widgets.Label(new Rect(diceRect.x + 2f, diceRect.y + 60f + 3f, diceRect.width, 116f), shownRoll.ToString());
-            GUI.color = new Color(1f, 0.96f, 0.78f, fade);
+            GUI.color = new Color(numberFontColor.r, numberFontColor.g, numberFontColor.b, fade);
             Widgets.Label(new Rect(diceRect.x, diceRect.y + 60f, diceRect.width, 116f), shownRoll.ToString());
 
             Text.Font = GameFont.Small;
