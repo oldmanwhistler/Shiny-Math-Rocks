@@ -12,7 +12,7 @@
     <defName>SMR_GreenGoldD20</defName>
     <label>Green Gold</label>
     <description>Semi-translucent green with gold flecks.</description>
-    <texPath>UI/Dice/CosmicD20</texPath>
+    <texPath>UI/Dice/GreenGoldD20</texPath>
   </ShinyMathRocks.DiceThemeDef>    
 
     <ShinyMathRocks.DiceThemeDef>
@@ -95,6 +95,7 @@
 <ShinyMathRocks.DiceThemeDef>
     <defName>SMR_HighmateNekoD20</defName>
     <label>Highmate Neko</label>
+    <fontColor>(101, 77, 142)</fontColor>
     <description>A translucent cerulean glass D20 woven with elegant white swirls and shimmering gold foil, holding partially obscured pixel-art cat inclusions suspended within its depths.</description>
     <texPath>UI/Dice/HighmateNekoD20</texPath>
   </ShinyMathRocks.DiceThemeDef>
