@@ -46,7 +46,7 @@ namespace ShinyMathRocks
                 return;
             }
 
-            DiceRollUtility.RollForPawn(pawn);
+            DiceRollUtility.RollForPawn(pawn); // No theme for debug rolls
         }
     }
 }

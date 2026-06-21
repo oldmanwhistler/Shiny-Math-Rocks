@@ -1,4 +1,5 @@
 using RimWorld;
+using UnityEngine; // Added
 using Verse;
 using Verse.Sound;
 
@@ -9,17 +10,48 @@ namespace ShinyMathRocks
         public static int RollForPawn(Pawn pawn)
         {
             int roll = Rand.RangeInclusive(1, 20);
-            ApplyRoll(pawn, roll);
+            ApplyRoll(pawn, roll, null); // Pass null for diceThemeDefName
             return roll;
         }
 
-        public static void ApplyRoll(Pawn pawn, int roll)
+        public static void ApplyRoll(Pawn pawn, int roll, string diceThemeDefName = null)
         {
             if (pawn == null)
             {
                 return;
             }
 
+            // Get or add Dice Goblin hediff
+            Hediff_DiceGoblin diceGoblinHediff = pawn.health.hediffSet.GetFirstHediffOfDef(ShinyMathRocksDefOf.SMR_DiceGoblinStatus) as Hediff_DiceGoblin;
+            if (diceGoblinHediff == null)
+            {
+                diceGoblinHediff = (Hediff_DiceGoblin)HediffMaker.MakeHediff(ShinyMathRocksDefOf.SMR_DiceGoblinStatus, pawn);
+                pawn.health.AddHediff(diceGoblinHediff);
+            }
+
+            // Update stats
+            diceGoblinHediff.totalRolls++;
+            if (roll == 20)
+            {
+                diceGoblinHediff.nat20Count++;
+                if (!diceThemeDefName.NullOrEmpty())
+                {
+                    if (diceGoblinHediff.themeNat20s.ContainsKey(diceThemeDefName))
+                    {
+                        diceGoblinHediff.themeNat20s[diceThemeDefName]++;
+                    }
+                    else
+                    {
+                        diceGoblinHediff.themeNat20s.Add(diceThemeDefName, 1);
+                    }
+                }
+            }
+            else if (roll == 1)
+            {
+                diceGoblinHediff.nat1Count++;
+            }
+
+            // Existing mood and UI logic
             int stage = StageForRoll(roll);
 
             if (pawn.needs?.mood?.thoughts?.memories != null)
@@ -31,11 +63,11 @@ namespace ShinyMathRocks
 
             if (pawn.Map == Find.CurrentMap)
             {
-                PawnOnMap(pawn, roll, stage);
+                PawnOnMap(pawn, roll, stage, diceThemeDefName);
             }            
         }
 
-        private static void PawnOnMap(Pawn pawn, int roll, int stage)
+        private static void PawnOnMap(Pawn pawn, int roll, int stage, string diceThemeDefName)
         {
             if (pawn.Spawned && ShinyMathRocksDefOf.SMR_DiceClatter != null)
             {
@@ -53,7 +85,7 @@ namespace ShinyMathRocks
 
                 if (ShinyMathRocksMod.Settings == null || ShinyMathRocksMod.Settings.showRollWindow)
                 {
-                    Find.WindowStack.Add(new Window_DiceRoll(pawn.LabelShortCap, roll, stage));
+                    Find.WindowStack.Add(new Window_DiceRoll(pawn.LabelShortCap, roll, stage, diceThemeDefName));
                 }
             }
         }

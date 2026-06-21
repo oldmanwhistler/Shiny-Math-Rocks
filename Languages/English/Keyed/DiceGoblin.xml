@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <SMR_DiceGoblinStats>
+    Statistics:\n  Total Rolls: {0}\n  Nat 20s: {1}\n  Nat 1s: {2}\n  Favorite Die: {3}\n  Luck Delta: {4}
+  </SMR_DiceGoblinStats>
+
+</LanguageData>

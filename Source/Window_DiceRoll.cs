@@ -20,11 +20,12 @@ namespace ShinyMathRocks
         private float lastTickSoundTime = -999f;
         private bool finalSoundPlayed;
         private Texture2D diceTexture;
+        private string themeDefNameUsed; // Store the theme defName that was actually used
 
         public override Vector2 InitialSize => new Vector2(460f, 420f);
         protected override float Margin => 0f;
 
-        public Window_DiceRoll(string pawnLabel, int finalRoll, int stage)
+        public Window_DiceRoll(string pawnLabel, int finalRoll, int stage, string diceThemeDefName = null)
         {
             this.pawnLabel = pawnLabel;
             this.finalRoll = finalRoll;
@@ -44,7 +45,49 @@ namespace ShinyMathRocks
             soundAppear = null;
             soundClose = null;
 
-            diceTexture = LoadRandomDiceTexture();
+            // Attempt to load the texture for the specific theme passed to the constructor
+            if (!diceThemeDefName.NullOrEmpty())
+            {
+                DiceThemeDef themeDef = DefDatabase<DiceThemeDef>.GetNamedSilentFail(diceThemeDefName);
+                if (themeDef != null && !themeDef.texPath.NullOrEmpty())
+                {
+                    Texture2D tex = ContentFinder<Texture2D>.Get(themeDef.texPath, reportFailure: false);
+                    if (tex != null)
+                    {
+                        diceTexture = tex;
+                        themeDefNameUsed = diceThemeDefName;
+                    }
+                }
+            }
+
+            // If no specific theme was provided or it failed to load, fall back to a random one
+            if (diceTexture == null)
+            {
+                List<DiceThemeDef> defs = DefDatabase<DiceThemeDef>.AllDefsListForReading;
+                if (defs != null && defs.Count > 0)
+                {
+                    defs.Shuffle(); // Randomize selection
+                    foreach (var def in defs)
+                    {
+                        if (def != null && !def.texPath.NullOrEmpty())
+                        {
+                            Texture2D tex = ContentFinder<Texture2D>.Get(def.texPath, reportFailure: false);
+                            if (tex != null)
+                            {
+                                diceTexture = tex;
+                                themeDefNameUsed = def.defName;
+                                break;
+                            }
+                        }
+                    }
+                }
+                // Final fallback to default if no valid themes found
+                if (diceTexture == null)
+                {
+                    diceTexture = ContentFinder<Texture2D>.Get("UI/Dice/ShinyD20", reportFailure: false); // Default if none load
+                    themeDefNameUsed = "SMR_DefaultBlueD20";
+                }
+            }
         }
 
         public override void DoWindowContents(Rect inRect)
@@ -137,31 +180,6 @@ namespace ShinyMathRocks
                 lastTickSoundTime = elapsed;
                 SoundDefOf.Tick_Tiny.PlayOneShotOnCamera();
             }
-        }
-
-        private Texture2D LoadRandomDiceTexture()
-        {
-            List<DiceThemeDef> defs = DefDatabase<DiceThemeDef>.AllDefsListForReading;
-            if (defs == null || defs.Count == 0)
-            {
-                return null;
-            }
-
-            int start = Rand.Range(0, defs.Count);
-            for (int i = 0; i < defs.Count; i++)
-            {
-                DiceThemeDef def = defs[(start + i) % defs.Count];
-                if (def != null && !def.texPath.NullOrEmpty())
-                {
-                    Texture2D tex = ContentFinder<Texture2D>.Get(def.texPath, reportFailure: false);
-                    if (tex != null)
-                    {
-                        return tex;
-                    }
-                }
-            }
-
-            return null;
         }
 
         private Color ResultColor()

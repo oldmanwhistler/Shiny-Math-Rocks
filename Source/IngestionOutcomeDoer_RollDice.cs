@@ -7,7 +7,7 @@ namespace ShinyMathRocks
     {
         protected override void DoIngestionOutcomeSpecial(Pawn pawn, Thing ingested, int ingestedCount)
         {
-            DiceRollUtility.RollForPawn(pawn);
+            DiceRollUtility.RollForPawn(pawn); // No theme for ingestion outcome
         }
     }
 }

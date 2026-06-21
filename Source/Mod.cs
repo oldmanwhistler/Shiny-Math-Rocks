@@ -7,6 +7,8 @@ namespace ShinyMathRocks
     {
         public bool showRollWindow = true;
         public float moodScale = 1f;
+        public int rollsRequired = 3;
+        public float buffValue = 0.01f;
 
         public override void ExposeData()
         {
@@ -40,9 +42,18 @@ namespace ShinyMathRocks
             listing.Label("Mood scale: " + Settings.moodScale.ToString("0.00") + "x");
             Settings.moodScale = listing.Slider(Settings.moodScale, 0f, 2f);
             listing.Gap(8f);
-            if (listing.ButtonText("Reset mood scale"))
+            listing.Label("Optimization delta per tier: " + ShinyMathRocksMod.Settings.rollsRequired);
+            ShinyMathRocksMod.Settings.rollsRequired = (int)listing.Slider(ShinyMathRocksMod.Settings.rollsRequired, 1, 20);
+            listing.Gap(4f);
+            listing.Label("Consciousness buff/debuff per tier: " + ShinyMathRocksMod.Settings.buffValue.ToStringPercent());
+            ShinyMathRocksMod.Settings.buffValue = listing.Slider(ShinyMathRocksMod.Settings.buffValue, 0.001f, 0.05f);
+            listing.Gap(8f);
+            if (listing.ButtonText("Reset settings"))
             {
-                Settings.moodScale = 1f;
+                ShinyMathRocksMod.Settings.showRollWindow = true;
+                ShinyMathRocksMod.Settings.moodScale = 1f;
+                ShinyMathRocksMod.Settings.rollsRequired = 3;
+                ShinyMathRocksMod.Settings.buffValue = 0.01f;
             }
             listing.End();
         }
