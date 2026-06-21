@@ -118,7 +118,7 @@ namespace ShinyMathRocks
 
                 if (ShinyMathRocksMod.Settings == null || ShinyMathRocksMod.Settings.showRollWindow)
                 {
-                    Find.WindowStack.Add(new Window_DiceRoll(pawn.LabelShortCap, roll, stage, diceThemeDef));
+                    GameComponent_ShinyMathRocks.Instance.EnqueueDiceRollWindow(new Window_DiceRoll(pawn.LabelShortCap, roll, stage, diceThemeDef));
                 }
             }
         }

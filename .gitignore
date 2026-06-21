@@ -274,3 +274,7 @@ Source/obj/Debug/ShinyMathRocks.csproj.AssemblyReference.cache
 Sounds/SMR/DiceClatter.ogg
 Assemblies/ShinyMathRocks.dll
 Assemblies/ShinyMathRocks.pdb
+Textures/UI/Dice/BlackGoldD20.png
+Textures/UI/Dice/GalaxyD20.png
+Textures/UI/Dice/RedTranslucentD20.png
+Textures/UI/Dice/ShinyD20.png
