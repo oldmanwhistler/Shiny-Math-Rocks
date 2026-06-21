@@ -7,14 +7,20 @@ namespace ShinyMathRocks
     {
         public bool showRollWindow = true;
         public float moodScale = 1f;
-        public int rollsRequired = 3;
-        public float buffValue = 0.01f;
+        public int rollsRequired = 1;
+        public float buffValue = 0.005f;
+        public Vector2 diceWindowPosition = new Vector2(-1f, -1f);
+        public Vector2 diceWindowSize = new Vector2(460f, 420f); // Default to initial size
 
         public override void ExposeData()
         {
             base.ExposeData();
             Scribe_Values.Look(ref showRollWindow, "showRollWindow", true);
             Scribe_Values.Look(ref moodScale, "moodScale", 1f);
+            Scribe_Values.Look(ref rollsRequired, "rollsRequired", 1);
+            Scribe_Values.Look(ref buffValue, "buffValue", 0.005f);
+            Scribe_Values.Look(ref diceWindowPosition, "diceWindowPosition", new Vector2(-1f, -1f));
+            Scribe_Values.Look(ref diceWindowSize, "diceWindowSize", new Vector2(460f, 420f));
         }
     }
 
@@ -54,6 +60,8 @@ namespace ShinyMathRocks
                 ShinyMathRocksMod.Settings.moodScale = 1f;
                 ShinyMathRocksMod.Settings.rollsRequired = 3;
                 ShinyMathRocksMod.Settings.buffValue = 0.01f;
+                ShinyMathRocksMod.Settings.diceWindowPosition = new Vector2(-1f, -1f);
+                ShinyMathRocksMod.Settings.diceWindowSize = new Vector2(460f, 420f);
             }
             listing.End();
         }
