@@ -29,15 +29,27 @@ namespace ShinyMathRocks
                 pawn.needs.mood.thoughts.memories.TryGainMemory(memory);
             }
 
+            if (pawn.Map == Find.CurrentMap)
+            {
+                PawnOnMap(pawn, roll, stage);
+            }            
+        }
+
+        private static void PawnOnMap(Pawn pawn, int roll, int stage)
+        {
             if (pawn.Spawned && ShinyMathRocksDefOf.SMR_DiceClatter != null)
             {
-                ShinyMathRocksDefOf.SMR_DiceClatter.PlayOneShot(SoundInfo.InMap(new TargetInfo(pawn.Position, pawn.Map)));
+                ShinyMathRocksDefOf.SMR_DiceClatter.PlayOneShot(
+                    SoundInfo.InMap(new TargetInfo(pawn.Position, pawn.Map)));
             }
 
             if (PawnUtility.ShouldSendNotificationAbout(pawn))
             {
-                MessageTypeDef messageType = roll == 1 ? MessageTypeDefOf.NegativeEvent : (roll == 20 || roll >= 16 ? MessageTypeDefOf.PositiveEvent : MessageTypeDefOf.NeutralEvent);
-                Messages.Message(pawn.LabelShortCap + " rolled a " + roll + ": " + LabelForStage(stage), pawn, messageType, historical: false);
+                MessageTypeDef messageType = roll == 1
+                    ? MessageTypeDefOf.NegativeEvent
+                    : (roll == 20 || roll >= 16 ? MessageTypeDefOf.PositiveEvent : MessageTypeDefOf.NeutralEvent);
+                Messages.Message(pawn.LabelShortCap + " rolled a " + roll + ": " + LabelForStage(stage), pawn,
+                    messageType, historical: false);
 
                 if (ShinyMathRocksMod.Settings == null || ShinyMathRocksMod.Settings.showRollWindow)
                 {
