@@ -70,4 +70,47 @@
     <description>A sharp-edged D20 crafted from translucent orange glass suspended with opaque white cream swirls and distinct melting globules.</description>
     <texPath>UI/Dice/orangeCreamD20</texPath>
   </ShinyMathRocks.DiceThemeDef>
+
+<ShinyMathRocks.DiceThemeDef>
+  <defName>SMR_WraithSmokeD20</defName>
+  <label>Wraith Smoke D20</label>
+  <description>A translucent smoky black and deep teal resin core swirling with wisps of silver foil flakes to mimic the ethereal, tattered cloak of a haunting wraith.</description>
+  <texPath>UI/Dice/WraithSmokeD20</texPath>
+</ShinyMathRocks.DiceThemeDef>
+
+<ShinyMathRocks.DiceThemeDef>
+  <defName>SMR_NeonGraveD20</defName>
+  <label>Neon Grave D20</label>
+  <description>A smoke-filled, translucent icosahedron featuring vibrant neon pink skulls and crossed golden swords emblazoned on its triangular faces.</description>
+  <texPath>UI/Dice/NeonGraveD20</texPath>
+</ShinyMathRocks.DiceThemeDef>
+
+<ShinyMathRocks.DiceThemeDef>
+  <defName>SMR_NephsHairD20</defName>
+  <label>Nephviri's Hair D20</label>
+  <description>A sharp-edged, translucent light violet glass 20-sided die containing a horned tiefling skull with long hair interwoven with miniature daggers, vibrant flowers, and tiny woodland animals.</description>
+  <texPath>UI/Dice/NephsHairD20</texPath>
+</ShinyMathRocks.DiceThemeDef>
+
+<ShinyMathRocks.DiceThemeDef>
+    <defName>SMR_HighmateNekoD20</defName>
+    <label>Novaroma Highmate Neko</label>
+    <description>A translucent cerulean glass D20 woven with elegant white swirls and shimmering gold foil, holding partially obscured pixel-art cat inclusions suspended within its depths.</description>
+    <texPath>UI/Dice/HighmateNekoD20</texPath>
+  </ShinyMathRocks.DiceThemeDef>
+
+<ShinyMathRocks.DiceThemeDef>
+    <defName>SMR_SamhaphageD20</defName>
+    <label>The Samhaphage</label>
+    <description>A dark, blood-red and obsidian die adorned with sinister thorns and an eerie, smooth black sphere reminiscent of a monstrous entity.</description>
+    <texPath>UI/Dice/SamhaphageD20</texPath>
+  </ShinyMathRocks.DiceThemeDef>
+
+<ShinyMathRocks.DiceThemeDef>
+    <defName>SMR_ManicEyeD20</defName>
+    <label>Manic Eye D20</label>
+    <description>A transparent glass D20 filled with neon-green liquid that suspends a single, manic red eye taking up half the die's internal space.</description>
+    <texPath>UI/Dice/ManicEyeD20</texPath>
+  </ShinyMathRocks.DiceThemeDef>
+
 </Defs>
