@@ -4,15 +4,20 @@ Note: This is AI coded. It would have been a one shot if I had liked the dice de
 
 ## Shiny Math Rocks
 
-Adds collectible D20 dice pawns can roll for a randomized mood effect. It's a drug that's safe and fun for the whole family!
+Adds D20 dice as a recreational drug pawns can roll for a randomized mood effect. Drugs: safe and fun for the whole family! Relive the BG3 dice roll experience in RimWorld.
 
 Inspired by a dumb comment I made when I saw [Dungeons and Pawns](https://steamcommunity.com/sharedfiles/filedetails/?id=3746765238) mod.
 
 Just like real life you can spend 15 silver for some shiny math rocks that make you happy inside... if they roll well.
 
+## Future Plans
+
+- Hire Amelia Tyler and Neil Newbon to make comments when you roll really well or really bad.
+- actually no, this is probably a one and done except it's kind of and easy to add new dice sets.
+
 ## Apologies
 
-Apologies to Matt and Brennan for using AI to make splash page art. I am sorry I disappointed you. :(
+Apologies to Matt and Brennan for using AI to make splash page art in their likeness. I am sorry I disappointed you. :(
 
 ## Source Code
 
