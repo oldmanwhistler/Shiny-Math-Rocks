@@ -58,7 +58,7 @@ namespace ShinyMathRocks
                     DiceThemeDef themeDef = DefDatabase<DiceThemeDef>.GetNamedSilentFail(favoriteThemeDefName);
                     if (themeDef != null)
                     {
-                        return $"{themeDef.LabelCap} ({maxNat20s} Nat 20s)\n\n  {themeDef.description}";
+                        return $"{themeDef.LabelCap}\n\n  {themeDef.description}\n\n{maxNat20s} Nat 20s with fav die.";
                     }
                 }
 
