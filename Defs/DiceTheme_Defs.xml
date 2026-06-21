@@ -50,4 +50,24 @@
     <texPath>UI/Dice/TheReliquaryD20</texPath>
   </ShinyMathRocks.DiceThemeDef> 
 
+<ShinyMathRocks.DiceThemeDef>
+  <defName>SMR_CrimsonNebulaD20</defName>
+  <label>Crimson Nebula Liquid Core</label>
+  <description>A translucent deep red and swirling purple resin D20 houses a swirling liquid core filled with iridescent glitter dust.</description>
+  <texPath>UI/Dice/CrimsonNebulaD20</texPath>
+</ShinyMathRocks.DiceThemeDef>
+
+<ShinyMathRocks.DiceThemeDef>
+  <defName>SMR_CausticSlimeD20</defName>
+  <label>Caustic Slime Aberration</label>
+  <description>A translucent, split half-and-half resin d20 swirling with toxic green and sickly purple, featuring embedded gold foil flakes that catch the light like shimmering bile.</description>
+  <texPath>UI/Dice/CausticSlimeD20</texPath>
+</ShinyMathRocks.DiceThemeDef>
+
+<ShinyMathRocks.DiceThemeDef>
+    <defName>SMR_orangeCreamD20</defName>
+    <label>Orange Cream Swirl D20</label>
+    <description>A sharp-edged D20 crafted from translucent orange glass suspended with opaque white cream swirls and distinct melting globules.</description>
+    <texPath>UI/Dice/orangeCreamD20</texPath>
+  </ShinyMathRocks.DiceThemeDef>
 </Defs>
