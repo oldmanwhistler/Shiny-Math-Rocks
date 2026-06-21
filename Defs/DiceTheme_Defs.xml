@@ -94,12 +94,12 @@
 
 <ShinyMathRocks.DiceThemeDef>
     <defName>SMR_HighmateNekoD20</defName>
-    <label>Novaroma Highmate Neko</label>
+    <label>Highmate Neko</label>
     <description>A translucent cerulean glass D20 woven with elegant white swirls and shimmering gold foil, holding partially obscured pixel-art cat inclusions suspended within its depths.</description>
     <texPath>UI/Dice/HighmateNekoD20</texPath>
   </ShinyMathRocks.DiceThemeDef>
 
-<ShinyMathRocks.DiceThemeDef>
+<ShinyMathRocks.DiceThemeDef MayRequire="oldmanwhistler.samhaphage">
     <defName>SMR_SamhaphageD20</defName>
     <label>The Samhaphage</label>
     <description>A dark, blood-red and obsidian die adorned with sinister thorns and an eerie, smooth black sphere reminiscent of a monstrous entity.</description>
@@ -109,8 +109,15 @@
 <ShinyMathRocks.DiceThemeDef>
     <defName>SMR_ManicEyeD20</defName>
     <label>Manic Eye D20</label>
-    <description>A transparent glass D20 filled with neon-green liquid that suspends a single, manic red eye taking up half the die's internal space.</description>
+    <description>A transparent glass D20 filled with neon-green liquid that suspends a single, manic red eye.</description>
     <texPath>UI/Dice/ManicEyeD20</texPath>
   </ShinyMathRocks.DiceThemeDef>
+
+<ShinyMathRocks.DiceThemeDef>
+  <defName>SMR_TranslucentSapphireD20</defName>
+  <label>Translucent Sapphire D20</label>
+  <description>A gleaming, twenty-sided die forged from translucent blue sapphire with a prominent black border and sharp, crystalline facets.</description>
+  <texPath>UI/Dice/TranslucentSapphireD20</texPath>
+</ShinyMathRocks.DiceThemeDef>
 
 </Defs>
