@@ -1,20 +1,44 @@
 using RimWorld;
-using UnityEngine; // Added
+using UnityEngine;
 using Verse;
 using Verse.Sound;
+using System.Collections.Generic;
 
 namespace ShinyMathRocks
 {
     public static class DiceRollUtility
     {
+        public static DiceThemeDef RandomDiceTheme()
+        {
+            List<DiceThemeDef> defs = DefDatabase<DiceThemeDef>.AllDefsListForReading;
+            if (defs != null && defs.Count > 0)
+            {
+                defs.Shuffle(); // Randomize selection
+                foreach (var def in defs)
+                {
+                    if (def != null && !def.texPath.NullOrEmpty())
+                    {
+                        Texture2D tex = ContentFinder<Texture2D>.Get(def.texPath, reportFailure: false);
+                        if (tex != null)
+                        {                            
+                            return def;
+                        }
+                    }
+                }
+            }
+
+            DiceThemeDef defaultTheme = DefDatabase<DiceThemeDef>.GetNamedSilentFail("SMR_DefaultBlueD20");
+            return defaultTheme;
+        }
+
         public static int RollForPawn(Pawn pawn)
         {
             int roll = Rand.RangeInclusive(1, 20);
-            ApplyRoll(pawn, roll, null); // Pass null for diceThemeDefName
+            ApplyRoll(pawn, roll); // Pass null for diceThemeDefName
             return roll;
         }
 
-        public static void ApplyRoll(Pawn pawn, int roll, string diceThemeDefName = null)
+        public static void ApplyRoll(Pawn pawn, int roll)
         {
             if (pawn == null)
             {
@@ -28,6 +52,9 @@ namespace ShinyMathRocks
                 diceGoblinHediff = (Hediff_DiceGoblin)HediffMaker.MakeHediff(ShinyMathRocksDefOf.SMR_DiceGoblinStatus, pawn);
                 pawn.health.AddHediff(diceGoblinHediff);
             }
+
+            DiceThemeDef diceThemeDef = RandomDiceTheme();
+            string diceThemeDefName = diceThemeDef?.defName;
 
             // Update stats
             diceGoblinHediff.totalRolls++;
@@ -44,6 +71,11 @@ namespace ShinyMathRocks
                     {
                         diceGoblinHediff.themeNat20s.Add(diceThemeDefName, 1);
                     }
+                }
+                else
+                {
+                    Log.Error($"{pawn.LabelShort} rolled a nat 20 without the dice name. This should not happen. Please report to mod author.");
+                    
                 }
             }
             else if (roll == 1)
@@ -63,11 +95,12 @@ namespace ShinyMathRocks
 
             if (pawn.Map == Find.CurrentMap)
             {
-                PawnOnMap(pawn, roll, stage, diceThemeDefName);
+                PawnOnMap(pawn, roll, stage, diceThemeDef);
             }            
         }
 
-        private static void PawnOnMap(Pawn pawn, int roll, int stage, string diceThemeDefName)
+
+        private static void PawnOnMap(Pawn pawn, int roll, int stage, DiceThemeDef diceThemeDef)
         {
             if (pawn.Spawned && ShinyMathRocksDefOf.SMR_DiceClatter != null)
             {
@@ -85,7 +118,7 @@ namespace ShinyMathRocks
 
                 if (ShinyMathRocksMod.Settings == null || ShinyMathRocksMod.Settings.showRollWindow)
                 {
-                    Find.WindowStack.Add(new Window_DiceRoll(pawn.LabelShortCap, roll, stage, diceThemeDefName));
+                    Find.WindowStack.Add(new Window_DiceRoll(pawn.LabelShortCap, roll, stage, diceThemeDef));
                 }
             }
         }

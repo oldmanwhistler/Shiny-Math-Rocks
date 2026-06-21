@@ -8,19 +8,18 @@ using Verse;
 namespace ShinyMathRocks
 {
     public class Hediff_DiceGoblin : Hediff    {
+        public int totalRolls;
         public int nat20Count;
         public int nat1Count;
-        public int totalRolls;
+        public float Lucky => nat20Count - 0.5f * nat1Count;
         public Dictionary<string, int> themeNat20s = new Dictionary<string, int>();
-
-        public int LuckDelta => nat20Count - nat1Count;
 
         public override void ExposeData()
         {
             base.ExposeData();
+            Scribe_Values.Look(ref totalRolls, "totalRolls", 0);
             Scribe_Values.Look(ref nat20Count, "nat20Count", 0);
             Scribe_Values.Look(ref nat1Count, "nat1Count", 0);
-            Scribe_Values.Look(ref totalRolls, "totalRolls", 0);
             Scribe_Collections.Look(ref themeNat20s, "themeNat20s", LookMode.Value, LookMode.Value);
             if (Scribe.mode == LoadSaveMode.PostLoadInit && themeNat20s == null)
             {
@@ -59,7 +58,7 @@ namespace ShinyMathRocks
                     DiceThemeDef themeDef = DefDatabase<DiceThemeDef>.GetNamedSilentFail(favoriteThemeDefName);
                     if (themeDef != null)
                     {
-                        return themeDef.LabelCap;
+                        return $"{themeDef.LabelCap} ({maxNat20s} Nat 20s)\n\n  {themeDef.description}";
                     }
                 }
 
@@ -74,7 +73,7 @@ namespace ShinyMathRocks
 
             if (rollsRequired <= 0) rollsRequired = 1; // Prevent division by zero
 
-            float effectiveDelta = LuckDelta;
+            float effectiveDelta = Lucky;
             float consciousnessOffset = 0f;
 
             if (effectiveDelta != 0)
@@ -102,9 +101,9 @@ namespace ShinyMathRocks
                     totalRolls,
                     nat20Count,
                     nat1Count,
-                    FavoriteDieLabel,
-                    LuckDelta
-                );
+                    Lucky,
+                    FavoriteDieLabel
+                    );
                 return baseTip + "\n" + stats;
             }
         }
