@@ -4,7 +4,7 @@
     <defName>SMR_DiceGoblinStatus</defName>
     <hediffClass>ShinyMathRocks.Hediff_DiceGoblin</hediffClass>
     <label>dice goblin</label>
-    <description>This pawn is fundamentally obsessed with rolling dice. Their psychological state scales elegantly with their streak of critical successes.</description>
+    <description>This pawn is fundamentally obsessed with rolling dice. Their psychological state scales with their streak of critical successes.</description>
     <defaultLabelColor>(0.7, 0.4, 0.9)</defaultLabelColor>
     <isBad>false</isBad>
     <everCurableByItem>false</everCurableByItem>
