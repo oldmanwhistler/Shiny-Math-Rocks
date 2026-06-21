@@ -44,6 +44,8 @@ namespace ShinyMathRocks
             focusWhenOpened = false;
             soundAppear = null;
             soundClose = null;
+            draggable = true; // Make window draggable
+            doCloseX = true; // Add close button
 
             // Attempt to load the texture for the specific theme passed to the constructor
             if (diceThemeDef != null && !diceThemeDef.texPath.NullOrEmpty())
@@ -55,6 +57,62 @@ namespace ShinyMathRocks
                     themeDefNameUsed = diceThemeDef.defName;
                 }
             }
+            // Fallback to random if no specific theme was provided or failed to load
+            if (diceTexture == null)
+            {
+                List<DiceThemeDef> defs = DefDatabase<DiceThemeDef>.AllDefsListForReading;
+                if (defs != null && defs.Count > 0)
+                {
+                    defs.Shuffle(); // Randomize selection
+                    foreach (var def in defs)
+                    {
+                        if (def != null && !def.texPath.NullOrEmpty())
+                        {
+                            Texture2D tex = ContentFinder<Texture2D>.Get(def.texPath, reportFailure: false);
+                            if (tex != null)
+                            {
+                                diceTexture = tex;
+                                themeDefNameUsed = def.defName;
+                                break;
+                            }
+                        }
+                    }
+                }
+                // Final fallback to default if no valid themes found
+                if (diceTexture == null)
+                {
+Texture2D tex = ContentFinder<Texture2D>.Get("UI/Dice/ShinyD20", reportFailure: false);
+                    if (tex != null)
+                    {
+                        diceTexture = tex;
+                        themeDefNameUsed = "SMR_DefaultBlueD20";
+                    }
+                }
+            }
+        }
+
+        public override void PostClose()
+        {
+            base.PostClose();
+            // Save window position and size
+            ShinyMathRocksMod.Settings.diceWindowPosition = windowRect.position;
+            ShinyMathRocksMod.Settings.diceWindowSize = windowRect.size;
+        }
+
+        protected override void SetInitialSizeAndPosition()
+        {
+            if (ShinyMathRocksMod.Settings.diceWindowPosition.x >= 0)
+            {
+                // Use saved position and size
+                windowRect = new Rect(ShinyMathRocksMod.Settings.diceWindowPosition, ShinyMathRocksMod.Settings.diceWindowSize);
+            }
+            else
+            {
+                // Default centering if not saved
+                base.SetInitialSizeAndPosition();
+            }
+            // Ensure window is fully on screen
+            windowRect = windowRect.Rounded();
         }
 
         public override void DoWindowContents(Rect inRect)
