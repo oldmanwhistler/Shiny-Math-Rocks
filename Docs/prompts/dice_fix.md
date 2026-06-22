@@ -1,0 +1,1 @@
+For this D20, add some shading and highlights to accentuate the facets. Make the background a solid colour. Redraw the 15 px black outline on the exterior edges. No numbers. Inclusions stay inside the front facing edges.

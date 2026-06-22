@@ -65,10 +65,10 @@
 </ShinyMathRocks.DiceThemeDef>
 
 <ShinyMathRocks.DiceThemeDef>
-    <defName>SMR_orangeCreamD20</defName>
+    <defName>SMR_OrangeCreamD20</defName>
     <label>Orange Cream Swirl D20</label>
     <description>A sharp-edged D20 crafted from translucent orange glass suspended with opaque white cream swirls and distinct melting globules.</description>
-    <texPath>UI/Dice/orangeCreamD20</texPath>
+    <texPath>UI/Dice/OrangeCreamD20</texPath>
   </ShinyMathRocks.DiceThemeDef>
 
 <ShinyMathRocks.DiceThemeDef>
@@ -103,7 +103,8 @@
 <ShinyMathRocks.DiceThemeDef MayRequire="oldmanwhistler.samhaphage">
     <defName>SMR_SamhaphageD20</defName>
     <label>The Samhaphage</label>
-    <description>A dark, blood-red and obsidian die adorned with sinister thorns and an eerie, smooth black sphere reminiscent of a monstrous entity.</description>
+    <fontColor>(150, 0, 0)</fontColor>
+    <description>A glass die adorned with sinister thorns and the maw of a monstrous entity.</description>
     <texPath>UI/Dice/SamhaphageD20</texPath>
   </ShinyMathRocks.DiceThemeDef>
 
@@ -140,5 +141,33 @@
     <label>Lustrous Plasteel Spacer D20</label>
     <description>A minimalist d20 silhouette featuring a smooth, ceramic-like plasteel surface that emits a subtle, icy blue sheen along its sharp geometric facets.</description>
     <texPath>UI/Dice/LustrousPlasteelD20</texPath>
+  </ShinyMathRocks.DiceThemeDef>
+
+  <ShinyMathRocks.DiceThemeDef>
+    <defName>SMR_LuminescentJadeD20</defName>
+    <label>Luminescent Polished Jade D20</label>
+    <description>A finely polished jade d20. The geometric facets that glow with a soft, ethereal green luminescence.</description>
+    <texPath>UI/Dice/LuminescentJadeD20</texPath>
+  </ShinyMathRocks.DiceThemeDef>
+
+  <ShinyMathRocks.DiceThemeDef>
+    <defName>SMR_PolishedJadeD20</defName>
+    <label>polished imperial jade</label>
+    <description>An d20 sculpted from deep green imperial jade. It captures the light with a smooth, sub-vitreous sheen.</description>
+    <texPath>UI/Dice/PolishedJadeD20</texPath>
+  </ShinyMathRocks.DiceThemeDef>
+
+  <ShinyMathRocks.DiceThemeDef>
+    <defName>SMR_LiquidGoldD20</defName>
+    <label>Liquid Gold Icosahedron</label>
+    <description>A sharp-edged twenty-sided die forged from molten, high-gloss liquid gold with dramatic facets that catch the light at every angle.</description>
+    <texPath>UI/Dice/LiquidGoldD20</texPath>
+  </ShinyMathRocks.DiceThemeDef>
+
+  <ShinyMathRocks.DiceThemeDef>
+    <defName>SMR_ScratchedSilverD20</defName>
+    <label>Scratched Polished Silver D20</label>
+    <description>A solid d20 forged from polished silver metal, its gleaming facets bearing the deep, battle-worn scratches of countless critical rolls.</description>
+    <texPath>UI/Dice/ScratchedSilverD20</texPath>
   </ShinyMathRocks.DiceThemeDef>
 </Defs>
