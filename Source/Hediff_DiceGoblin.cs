@@ -84,6 +84,12 @@ namespace ShinyMathRocks
             
             if (consciousnessOffset != 0f)
             {
+                // Add null check for DefOf field during potential hot reload
+                if (PawnCapacityDefOf.Consciousness == null)
+                {
+                    Log.Warning($"[Shiny Math Rocks] PawnCapacityDefOf.Consciousness was null during GetPawnCapacityModifiers(), likely due to hot reload. Skipping capacity modifier.");
+                    yield break; 
+                }
                 yield return new PawnCapacityModifier // Using PawnCapacityModifier directly
                 {
                     capacity = PawnCapacityDefOf.Consciousness,
