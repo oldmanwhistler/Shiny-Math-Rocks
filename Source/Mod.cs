@@ -8,8 +8,8 @@ namespace ShinyMathRocks
     {
         public bool showRollWindow = true;
         public float moodScale = 1f;
-        public int rollsRequired = 3;
-        public float buffValue = 0.01f;
+        public int rollsRequired = 1;
+        public float buffValue = 0.005f;
         public Vector2 diceWindowPosition = new Vector2(-1f, -1f);
         public Vector2 diceWindowSize = new Vector2(460f, 350f); // Default to initial size
         public string selectedDiceThemeDefName = "SMR_TranslucentSapphireD20"; // Default selected die for viewer
@@ -19,8 +19,8 @@ namespace ShinyMathRocks
             base.ExposeData();
             Scribe_Values.Look(ref showRollWindow, "showRollWindow", true);
             Scribe_Values.Look(ref moodScale, "moodScale", 1f);
-            Scribe_Values.Look(ref rollsRequired, "rollsRequired", 3);
-            Scribe_Values.Look(ref buffValue, "buffValue", 0.01f);
+            Scribe_Values.Look(ref rollsRequired, "rollsRequired", 1);
+            Scribe_Values.Look(ref buffValue, "buffValue", 0.05f);
             Scribe_Values.Look(ref diceWindowPosition, "diceWindowPosition", new Vector2(-1f, -1f));
             Scribe_Values.Look(ref diceWindowSize, "diceWindowSize", new Vector2(460f, 350f));
             Scribe_Values.Look(ref selectedDiceThemeDefName, "selectedDiceThemeDefName", "SMR_TranslucentSapphireD20");
@@ -90,6 +90,13 @@ namespace ShinyMathRocks
             if (previewTheme != null)
             {
                 DicePreviewUtility.DrawDiePreview(previewRect, previewTheme, "20", 1f);
+
+                Rect themeInfoRect = new Rect(viewerRect.x, viewerRect.y + 110f, viewerRect.width, viewerRect.height - 110f);
+                Text.Anchor = TextAnchor.UpperLeft;
+                GameFont oldFont = Text.Font;
+                Text.Font = GameFont.Small;
+                Widgets.Label(themeInfoRect, previewTheme.LabelCap + "\n\n" + previewTheme.description);
+                Text.Font = oldFont;
             }
             else
             {
@@ -105,8 +112,8 @@ namespace ShinyMathRocks
             {
                 ShinyMathRocksMod.Settings.showRollWindow = true;
                 ShinyMathRocksMod.Settings.moodScale = 1f;
-                ShinyMathRocksMod.Settings.rollsRequired = 3;
-                ShinyMathRocksMod.Settings.buffValue = 0.01f;
+                ShinyMathRocksMod.Settings.rollsRequired = 1;
+                ShinyMathRocksMod.Settings.buffValue = 0.005f;
                 ShinyMathRocksMod.Settings.diceWindowPosition = new Vector2(-1f, -1f);
                 ShinyMathRocksMod.Settings.diceWindowSize = new Vector2(460f, 350f);
                 ShinyMathRocksMod.Settings.selectedDiceThemeDefName = "SMR_TranslucentSapphireD20";
