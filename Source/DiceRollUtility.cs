@@ -116,9 +116,10 @@ namespace ShinyMathRocks
             {
                 if (pawn.needs?.mood?.thoughts?.memories != null)
                 {
-                    pawn.needs.mood.thoughts.memories.RemoveMemoriesOfDef(ShinyMathRocksDefOf.SMR_NewFavoriteDiceThought);
+                    // Let it stack
+                    //pawn.needs.mood.thoughts.memories.RemoveMemoriesOfDef(ShinyMathRocksDefOf.SMR_NewFavoriteDiceThought);
                     pawn.needs.mood.thoughts.memories.TryGainMemory(ShinyMathRocksDefOf.SMR_NewFavoriteDiceThought);
-                    Log.Message($"[Shiny Math Rocks] {pawn.LabelShort} found a new favorite dice: {currentFavoriteDiceDef.LabelCap}! Mood: +10.");
+                    //Log.Message($"[Shiny Math Rocks] {pawn.LabelShort} found a new favorite dice: {currentFavoriteDiceDef.LabelCap}! Mood: +10.");
                 }
                 diceGoblinHediff.lastFavoriteDiceDef = currentFavoriteDiceDef;
             }
