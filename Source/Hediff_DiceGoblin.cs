@@ -7,12 +7,14 @@ using Verse;
 
 namespace ShinyMathRocks
 {
-    public class Hediff_DiceGoblin : Hediff    {
+    public class Hediff_DiceGoblin : Hediff
+    {
         public int totalRolls;
         public int nat20Count;
         public int nat1Count;
         public float Lucky => nat20Count - 0.5f * nat1Count;
         public Dictionary<string, int> themeNat20s = new Dictionary<string, int>();
+        public DiceThemeDef lastFavoriteDiceDef; // Added for new feature
 
         public override void ExposeData()
         {
@@ -21,6 +23,7 @@ namespace ShinyMathRocks
             Scribe_Values.Look(ref nat20Count, "nat20Count", 0);
             Scribe_Values.Look(ref nat1Count, "nat1Count", 0);
             Scribe_Collections.Look(ref themeNat20s, "themeNat20s", LookMode.Value, LookMode.Value);
+            Scribe_Defs.Look(ref lastFavoriteDiceDef, "lastFavoriteDiceDef"); // Added for new feature
             if (Scribe.mode == LoadSaveMode.PostLoadInit && themeNat20s == null)
             {
                 themeNat20s = new Dictionary<string, int>();

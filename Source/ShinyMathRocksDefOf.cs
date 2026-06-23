@@ -9,6 +9,7 @@ namespace ShinyMathRocks
         public static ThingDef SMR_ShinyMathRock;
         public static JobDef SMR_RollDice;
         public static ThoughtDef SMR_DiceRollMood;
+        public static ThoughtDef SMR_NewFavoriteDiceThought;
         public static SoundDef SMR_DiceClatter;
         public static HediffDef SMR_DiceGoblinStatus;
 

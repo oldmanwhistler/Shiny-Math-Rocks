@@ -33,7 +33,15 @@ namespace ShinyMathRocks
 
         public static int RollForPawn(Pawn pawn)
         {
-            int roll = Rand.RangeInclusive(1, 20);
+            int roll;
+            if (ShinyMathRocksMod.Settings != null && ShinyMathRocksMod.Settings.onlyRoll1sOr20s)
+            {
+                roll = Rand.RangeInclusive(0, 1) == 0 ? 1 : 20; // 50% chance for 1 or 20
+            }
+            else
+            {
+                roll = Rand.RangeInclusive(1, 20);
+            }
             ApplyRoll(pawn, roll); // Pass null for diceThemeDefName
             return roll;
         }
@@ -82,6 +90,47 @@ namespace ShinyMathRocks
             {
                 diceGoblinHediff.nat1Count++;
             }
+
+            // --- Start New Feature: New Favorite Dice Thought ---
+            DiceThemeDef currentFavoriteDiceDef = null;
+            string currentFavoriteDefName = null;
+            int maxNat20s = -1;
+
+            if (diceGoblinHediff.themeNat20s != null && diceGoblinHediff.themeNat20s.Count > 0)
+            {
+                foreach (var entry in diceGoblinHediff.themeNat20s)
+                {
+                    if (entry.Value > maxNat20s)
+                    {
+                        maxNat20s = entry.Value;
+                        currentFavoriteDefName = entry.Key;
+                    }
+                }
+                if (currentFavoriteDefName != null)
+                {
+                    currentFavoriteDiceDef = DefDatabase<DiceThemeDef>.GetNamedSilentFail(currentFavoriteDefName);
+                }
+            }
+            
+            if (currentFavoriteDiceDef != null && currentFavoriteDiceDef != diceGoblinHediff.lastFavoriteDiceDef)
+            {
+                if (pawn.needs?.mood?.thoughts?.memories != null)
+                {
+                    pawn.needs.mood.thoughts.memories.RemoveMemoriesOfDef(ShinyMathRocksDefOf.SMR_NewFavoriteDiceThought);
+                    pawn.needs.mood.thoughts.memories.TryGainMemory(ShinyMathRocksDefOf.SMR_NewFavoriteDiceThought);
+                    Log.Message($"[Shiny Math Rocks] {pawn.LabelShort} found a new favorite dice: {currentFavoriteDiceDef.LabelCap}! Mood: +10.");
+                }
+                diceGoblinHediff.lastFavoriteDiceDef = currentFavoriteDiceDef;
+            }
+            else if (currentFavoriteDiceDef == null && diceGoblinHediff.lastFavoriteDiceDef != null)
+            {
+                if (pawn.needs?.mood?.thoughts?.memories != null)
+                {
+                     pawn.needs.mood.thoughts.memories.RemoveMemoriesOfDef(ShinyMathRocksDefOf.SMR_NewFavoriteDiceThought);
+                }
+                diceGoblinHediff.lastFavoriteDiceDef = null;
+            }
+            // --- End New Feature: New Favorite Dice Thought ---
 
             // Existing mood and UI logic
             int stage = StageForRoll(roll);

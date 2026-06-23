@@ -13,6 +13,7 @@ namespace ShinyMathRocks
         public Vector2 diceWindowPosition = new Vector2(-1f, -1f);
         public Vector2 diceWindowSize = new Vector2(460f, 350f); // Default to initial size
         public string selectedDiceThemeDefName = "SMR_TranslucentSapphireD20"; // Default selected die for viewer
+        public bool onlyRoll1sOr20s = false; // New setting for forced rolls
 
         public override void ExposeData()
         {
@@ -24,6 +25,7 @@ namespace ShinyMathRocks
             Scribe_Values.Look(ref diceWindowPosition, "diceWindowPosition", new Vector2(-1f, -1f));
             Scribe_Values.Look(ref diceWindowSize, "diceWindowSize", new Vector2(460f, 350f));
             Scribe_Values.Look(ref selectedDiceThemeDefName, "selectedDiceThemeDefName", "SMR_TranslucentSapphireD20");
+            Scribe_Values.Look(ref onlyRoll1sOr20s, "onlyRoll1sOr20s", false); // Expose new setting
         }
     }
 
@@ -107,6 +109,12 @@ namespace ShinyMathRocks
             }
             Text.Anchor = TextAnchor.UpperLeft; // Reset anchor
 
+            listing.GapLine();
+
+            listing.Gap(8f);
+            listing.CheckboxLabeled("Only roll 1s or 20s", ref Settings.onlyRoll1sOr20s,
+                "If enabled, dice rolls will only result in 1s or 20s. For debug/fun.");
+            
             listing.Gap(8f);
             if (listing.ButtonText("Reset settings"))
             {
