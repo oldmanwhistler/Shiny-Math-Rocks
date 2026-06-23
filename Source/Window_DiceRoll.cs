@@ -23,7 +23,7 @@ namespace ShinyMathRocks
         private string themeDefNameUsed; // Store the theme defName that was actually used
         private Color numberFontColor = Color.white; // New field for font color
 
-        public override Vector2 InitialSize => new Vector2(460f, 350f);
+        public override Vector2 InitialSize => new Vector2(368f, 280f);
         protected override float Margin => 0f;
 
         public Window_DiceRoll(string pawnLabel, int finalRoll, int stage, DiceThemeDef diceThemeDef)
@@ -82,7 +82,7 @@ namespace ShinyMathRocks
                 // Final fallback to default if no valid themes found
                 if (diceTexture == null)
                 {
-Texture2D tex = ContentFinder<Texture2D>.Get("UI/Dice/ShinyD20", reportFailure: false);
+                    Texture2D tex = ContentFinder<Texture2D>.Get("UI/Dice/ShinyD20", reportFailure: false);
                     if (tex != null)
                     {
                         diceTexture = tex;
@@ -157,7 +157,7 @@ Texture2D tex = ContentFinder<Texture2D>.Get("UI/Dice/ShinyD20", reportFailure: 
             GUI.color = new Color(0f, 0f, 0f, 0.62f * fade);
             GUI.DrawTexture(inRect, BaseContent.WhiteTex);
 
-            Rect diceRect = new Rect(inRect.center.x - 118f, 52f, 236f, 236f);
+            Rect diceRect = new Rect(inRect.center.x - 94.4f, 41.6f, 188.8f, 188.8f);
             Color resultColor = ResultColor();
             Color tint = Color.Lerp(Color.white, resultColor, flash * 0.45f);
             tint.a = fade;
@@ -174,18 +174,18 @@ Texture2D tex = ContentFinder<Texture2D>.Get("UI/Dice/ShinyD20", reportFailure: 
             Text.Anchor = TextAnchor.MiddleCenter;
             Text.Font = GameFont.Medium;
             GUI.color = new Color(0f, 0f, 0f, 0.70f * fade);
-            Widgets.Label(new Rect(diceRect.x + 2f, diceRect.y + 60f + 3f, diceRect.width, 116f), shownRoll.ToString());
+            Widgets.Label(new Rect(diceRect.x + 2f, diceRect.y + 48f + 3f, diceRect.width, 92.8f), shownRoll.ToString());
             GUI.color = new Color(numberFontColor.r, numberFontColor.g, numberFontColor.b, fade);
-            Widgets.Label(new Rect(diceRect.x, diceRect.y + 60f, diceRect.width, 116f), shownRoll.ToString());
+            Widgets.Label(new Rect(diceRect.x, diceRect.y + 48f, diceRect.width, 92.8f), shownRoll.ToString());
 
             Text.Font = GameFont.Small;
             GUI.color = new Color(1f, 1f, 1f, 0.92f * fade);
-            Widgets.Label(new Rect(0f, 18f, inRect.width, 36f), pawnLabel + " rolls a D20...");
+            Widgets.Label(new Rect(0f, 14.4f, inRect.width, 28.8f), pawnLabel + " rolls a D20...");
 
             if (elapsed >= SpinDuration)
             {
                 GUI.color = new Color(resultColor.r, resultColor.g, resultColor.b, fade);
-                Widgets.Label(new Rect(0f, 302f, inRect.width, 36f), ResultLabel());
+                Widgets.Label(new Rect(0f, 241.6f, inRect.width, 28.8f), ResultLabel());
             }
 
             GUI.color = oldColor;
