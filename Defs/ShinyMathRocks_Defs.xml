@@ -16,10 +16,10 @@
     <stackLimit>75</stackLimit>
     <statBases>
       <MarketValue>8</MarketValue>
-      <Mass>0.02</Mass>
-      <DeteriorationRate>0.2</DeteriorationRate>
-      <Flammability>0.2</Flammability>
-      <WorkToMake>180</WorkToMake>
+      <Mass>0.01</Mass>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Flammability>0</Flammability>
+      <WorkToMake>100</WorkToMake>
     </statBases>
     <ingestible>
       <foodType>Processed</foodType>
@@ -29,7 +29,7 @@
       <baseIngestTicks>180</baseIngestTicks>
       <humanlikeOnly>true</humanlikeOnly>
       <joyKind>Chemical</joyKind>
-      <joy>0.05</joy>
+      <joy>0.3</joy>
       <drugCategory>Social</drugCategory>
       <ingestSound>SMR_DiceClatter</ingestSound>
       <ingestHoldUsesTable>false</ingestHoldUsesTable>
@@ -78,45 +78,6 @@
     <reportString>rolling TargetA.</reportString>
     <allowOpportunisticPrefix>true</allowOpportunisticPrefix>
   </JobDef>
-
-  <ThoughtDef>
-    <defName>SMR_DiceRollMood</defName>
-    <durationDays>0.75</durationDays>
-    <stackLimit>3</stackLimit>
-    <developmentalStageFilter>Child, Adult</developmentalStageFilter>
-    <stages>
-      <li>
-        <label>rolled a nat 1</label>
-        <description>I rolled a natural 1. The universe has personally mocked me.</description>
-        <baseMoodEffect>-5</baseMoodEffect>
-      </li>
-      <li>
-        <label>terrible roll</label>
-        <description>That roll was painfully bad.</description>
-        <baseMoodEffect>-2</baseMoodEffect>
-      </li>
-      <li>
-        <label>mediocre roll</label>
-        <description>The die landed somewhere in the mushy middle.</description>
-        <baseMoodEffect>2</baseMoodEffect>
-      </li>
-      <li>
-        <label>decent roll</label>
-        <description>That was a respectable roll.</description>
-        <baseMoodEffect>5</baseMoodEffect>
-      </li>
-      <li>
-        <label>great roll</label>
-        <description>The shiny math rock smiled on me.</description>
-        <baseMoodEffect>10</baseMoodEffect>
-      </li>
-      <li>
-        <label>rolled a nat 20!</label>
-        <description>Natural 20! I am unstoppable, at least emotionally.</description>
-        <baseMoodEffect>15</baseMoodEffect>
-      </li>
-    </stages>
-  </ThoughtDef>
 
   <SoundDef>
     <defName>SMR_DiceClatter</defName>

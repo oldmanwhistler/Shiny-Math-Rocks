@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+    <ThoughtDef>
+        <defName>SMR_NewFavoriteDiceThought</defName>
+        <validWhileDespawned>true</validWhileDespawned>
+        <stackLimit>3</stackLimit>
+        <stages>
+            <li>
+            <label>New favorite dice!</label>
+            <description>Found a new favorite dice set! The luck on these math rocks is absolutely unreal.</description>
+            <baseMoodEffect>10</baseMoodEffect>
+            </li>
+            <li>
+            <label>New favorite dice!</label>
+            <description>Blessed by the RNG gods. This set refuses to roll anything less than a critical success.</description>
+            <baseMoodEffect>10</baseMoodEffect>
+            </li>
+            <li>
+            <label>New favorite dice!</label>
+            <description>New favorite dice set acquired. Manifesting natural 20s only.</description>
+            <baseMoodEffect>10</baseMoodEffect>
+            </li>
+        </stages>
+        <durationDays>7</durationDays>
+    </ThoughtDef>
+
+    <ThoughtDef>
+    <defName>SMR_DiceRollMood</defName>
+    <durationDays>0.75</durationDays>
+    <stackLimit>3</stackLimit>
+    <developmentalStageFilter>Child, Adult</developmentalStageFilter>
+    <stages>
+      <li>
+        <label>rolled a nat 1</label>
+        <description>I rolled a natural 1. The universe has personally mocked me.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+      <li>
+        <label>terrible roll</label>
+        <description>That roll was painfully bad.</description>
+        <baseMoodEffect>-2</baseMoodEffect>
+      </li>
+      <li>
+        <label>mediocre roll</label>
+        <description>The die landed somewhere in the mushy middle.</description>
+        <baseMoodEffect>2</baseMoodEffect>
+      </li>
+      <li>
+        <label>decent roll</label>
+        <description>That was a respectable roll.</description>
+        <baseMoodEffect>5</baseMoodEffect>
+      </li>
+      <li>
+        <label>great roll</label>
+        <description>The shiny math rock smiled on me.</description>
+        <baseMoodEffect>10</baseMoodEffect>
+      </li>
+      <li>
+        <label>rolled a nat 20!</label>
+        <description>Natural 20! I am unstoppable, at least emotionally.</description>
+        <baseMoodEffect>15</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>    
+</Defs>
