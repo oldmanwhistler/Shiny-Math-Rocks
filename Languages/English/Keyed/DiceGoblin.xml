@@ -2,7 +2,7 @@
 <LanguageData>
 
   <SMR_DiceGoblinStats>
-    Statistics:\n  Total Rolls: {0}\n  Nat 20s: {1}\n  Nat 1s: {2}\n  Lucky: {3}\n  Favorite Die: {4}\n
+Statistics:\n\nTotal Rolls: {0}\nNat 20s: {1}\nNat 1s: {2}\nLucky: {3}\n\nFavorite Die: {4}\n
   </SMR_DiceGoblinStats>
 
   <SMR_DiceTheme>Dice Theme</SMR_DiceTheme>
