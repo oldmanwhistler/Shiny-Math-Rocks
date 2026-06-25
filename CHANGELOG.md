@@ -7,10 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [0.0.2] - 2026-06-25
+
+### Added
+
+- More dice.
+- Dice goblin status that buffs/debuffs pawn consciousness based on nat 20s and nat 1s.
+
 ### Changed
 
-- More dice. Changed graphics on existing dice.
-- Dice goblin status that buffs/debuffs pawn consciousness based on nat 20s and nat 1s.
+- Changed graphics on existing dice.
 - Don't do sound/visual unless the pawn is on the same map.
 - Dice window is smaller can can be moved out of the way.
 
